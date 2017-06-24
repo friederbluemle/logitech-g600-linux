@@ -12,6 +12,8 @@ input_event events[64];
 const char kDir[] = "/dev/input/by-id/";
 const char kPrefix[] = "usb-Logitech_Gaming_Mouse_G600_";
 const char kSuffix[] = "-if01-event-kbd";
+const int kOffset = 22;
+const int kOffsetGShift = 204;
 
 struct Command {
   const int scancode;
@@ -24,18 +26,18 @@ const Command kCommands[] = {
   { 5, "xdotool key Page_Down" }, // scroll right
   { 6, "xdotool key ctrl+c" }, // G8
   { 7, "xdotool key ctrl+shift+c" }, // G7
-  { 8, "i3-msg workspace next_on_output" }, // G9
-  { 9, "i3-msg move workspace next_on_output" }, // G10
-  { 10, "xdotool key ctrl+w" }, // G11
-  { 11, "pulseaudio-ctl down" }, // G12
-  { 12, "pulseaudio-ctl mute" }, // G13
-  { 13, "xdotool key ctrl+z" }, // G14
-  { 14, "xdotool key End" }, // G15
-  { 15, "xdotool key ctrl+End" }, // G16
+  { kOffset + 8, "xdotool key ctrl+w" }, // G9
+  { kOffset + 9, "xdotool key super+o" }, // G10
+  { kOffset + 10, "xdotool key super+f" }, // G11
+  { kOffset + 11, "xdotool key XF86_Forward" }, // G12
+  { kOffset + 12, "xdotool key XF86_Back" }, // G13
+  { kOffset + 13, "xdotool key super+Tab" }, // G14
+  { kOffset + 14, "xdotool key ctrl+shift+Tab" }, // G15
+  { kOffset + 15, "xdotool key ctrl+Tab" }, // G16
   { 16, "xdotool key Return" }, // G17
   { 17, "i3-msg fullscreen" }, // G18
   { 18, "xdotool key ctrl+slash t" }, // G19
-  { 19, "" }, // G20
+  { kOffset + 19, "xdotool key alt+Left" }, // G20
   { 20, "xdotool key alt+Left" }, // G-shift + scroll left
   { 21, "xdotool key alt+Right" }, // G-shift + scroll right
   { 22, "xdotool key ctrl+v" }, // G-shift + G8
@@ -43,10 +45,10 @@ const Command kCommands[] = {
   { 24, "i3-msg workspace prev_on_output" }, // G-shift + G9
   { 25, "i3-msg move workspace prev_on_output" }, // G-shift + G10
   { 26, "i3-msg kill" }, // G-shift + G11
-  { 27, "pulseaudio-ctl up" }, // G-shift + G12
+  { kOffsetGShift + 27, "pulseaudio-ctl up" }, // G-shift + G12
   { 28, "pulseaudio-ctl mute" }, // G-shift + G13
   { 29, "xdotool key ctrl+shift+z ctrl+y" }, // G-shift + G14
-  { 30, "xdotool key Home" }, // G-shift + G15
+  { kOffsetGShift + 30, "xdotool key Home" }, // G-shift + G15
   { 31, "xdotool key ctrl+Home" }, // G-shift + G16
   { 32, "xdotool key Escape" }, // G-shift + G17
   { 33, "i3-msg fullscreen" }, // G-shift + G18
